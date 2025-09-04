@@ -128,10 +128,3 @@ Edit the image paths at the bottom of the script to point to your own images (e.
 
 ---
 
-## License
-
-Add your preferred license text here.
-
-## Contact
-
-Questions or suggestions? Open an issue or message the maintainer.
