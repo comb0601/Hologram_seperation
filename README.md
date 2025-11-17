@@ -4,7 +4,7 @@
 
 ### *Advanced ID Card Video Analysis & Security Feature Detection*
 
-<img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=800&h=300&fit=crop" alt="Holographic Security Features" width="800"/>
+<img src="./images/5.png" alt="ID Card Video Capture" width="800"/>
 
 [![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.x-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)](https://opencv.org/)
@@ -29,7 +29,7 @@ This toolkit analyzes ID card videos frame-by-frame to detect and visualize secu
 - 📊 **Color variance** showing optically variable inks (OVI)
 
 <div align="center">
-<img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=300&fit=crop" alt="ID Card Security" width="600"/>
+<img src="./images/3.png" alt="Multi-Angle ID Card Capture Process" width="600"/>
 </div>
 
 ---
@@ -64,8 +64,29 @@ graph LR
 ```
 
 <div align="center">
-<img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=250&fit=crop" alt="Computer Vision Processing" width="800"/>
+<img src="./images/2.png" alt="Image Alignment and Hologram Separation Process" width="800"/>
 </div>
+
+---
+
+## 📂 Project Structure
+
+```
+Hologram_seperation/
+├── main.py                 # Core processing pipeline
+├── detection/              # AI-powered detection tools
+│   ├── demo.py            # YOLOv5 ID card detection
+│   └── README.md          # Detection documentation
+├── analysis/               # Image analysis & metrics
+│   ├── check.py           # Color, edge, specularity analysis
+│   └── README.md          # Analysis documentation
+└── images/                 # Project documentation images
+    ├── 1.png              # RGB to HSV conversion
+    ├── 2.png              # Alignment & separation
+    ├── 3.png              # Multi-angle capture
+    ├── 4.png              # Perspective variations
+    └── 5.png              # Practical use case
+```
 
 ---
 
@@ -114,18 +135,18 @@ python main.py
 
 <div align="center">
 
-| Input Frame | Aligned Stack | Max Composite |
-|-------------|---------------|---------------|
-| ![Frame](https://images.unsplash.com/photo-1589998059171-988d887df646?w=200&h=150&fit=crop) | ![Stack](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=150&fit=crop) | ![Composite](https://images.unsplash.com/photo-1563986768609-322da13575f3?w=200&h=150&fit=crop) |
+| Angle Variations | HSV Color Analysis | Hologram Separation |
+|------------------|--------------------|--------------------|
+| ![Angles](./images/4.png) | ![HSV](./images/1.png) | ![Separation](./images/2.png) |
 
 </div>
 
-### Method 2: AI-Powered Detection (`demo.py`)
+### Method 2: AI-Powered Detection (`detection/demo.py`)
 
 For automatic ID card detection and perspective correction:
 
 ```bash
-python demo.py -d yolov5x-seg-id-dr-pp-best.onnx -c yolov5
+python detection/demo.py -d yolov5x-seg-id-dr-pp-best.onnx -c yolov5
 ```
 
 **Features:**
@@ -133,6 +154,8 @@ python demo.py -d yolov5x-seg-id-dr-pp-best.onnx -c yolov5
 - 🔲 Automatic corner detection
 - 📐 Perspective transformation
 - 🖼️ Rectified output images
+
+📚 [View detailed detection documentation →](detection/README.md)
 
 ---
 
@@ -161,7 +184,7 @@ generate_max_mean_min_images('aligned_images', 'output')
 
 ---
 
-### 🤖 Script: `demo.py`
+### 🤖 Script: `detection/demo.py`
 
 **AI-Powered Detection Workflow:**
 
@@ -173,16 +196,18 @@ generate_max_mean_min_images('aligned_images', 'output')
 
 ```bash
 # Run detection pipeline
-python demo.py -d yolov5x-seg-id-dr-pp-best.onnx -c yolov5
+python detection/demo.py -d yolov5x-seg-id-dr-pp-best.onnx -c yolov5
 ```
 
+📚 [View detailed detection documentation →](detection/README.md)
+
 <div align="center">
-<img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=700&h=250&fit=crop" alt="AI Detection" width="700"/>
+<img src="./images/4.png" alt="Perspective Correction Examples" width="700"/>
 </div>
 
 ---
 
-### 📊 Script: `check.py`
+### 📊 Script: `analysis/check.py`
 
 **Image Metrics & Analysis:**
 
@@ -195,11 +220,16 @@ Analyzes security features through quantitative metrics:
 | **Specularity Index** | Reflective feature measurement |
 | **Contrast Ratio** | Highlight vs. base material contrast |
 
-```bash
-python check.py
+```python
+from analysis.check import color_metrics, edge_metrics, specularity_index
+
+# Analyze your composite images
+color_stats = color_metrics(image)
+edge_stats = edge_metrics(image)
+spec_index = specularity_index(image)
 ```
 
-Edit the script to point to your generated composite images for analysis.
+📚 [View detailed analysis documentation →](analysis/README.md)
 
 ---
 
@@ -209,19 +239,19 @@ Edit the script to point to your generated composite images for analysis.
 
 <div align="center">
 
-| Max Image | Mean Image | Min Image |
-|-----------|------------|-----------|
-| Brightest pixels reveal holograms | Average reduces noise | Darkest reveals base layer |
-| ![Max](https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=250&h=150&fit=crop) | ![Mean](https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=250&h=150&fit=crop) | ![Min](https://images.unsplash.com/photo-1546554137-f86b9593a222?w=250&h=150&fit=crop) |
+| RGB to HSV Conversion | Per-Pixel Processing | Multi-Angle Capture |
+|-----------------------|----------------------|---------------------|
+| Unique hue counting for hologram detection | Mean calculation & alignment matrix | Light angle variation reveals features |
+| ![HSV](./images/1.png) | ![Processing](./images/2.png) | ![Capture](./images/3.png) |
 
 </div>
 
 ### Edge Detection
 
 <div align="center">
-<img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=300&fit=crop" alt="Edge Detection Example" width="600"/>
+<img src="./images/1.png" alt="HSV Color Space Analysis" width="600"/>
 
-*Edge detection reveals microprinting and fine security features*
+*HSV color space conversion enables unique hue counting for hologram detection*
 </div>
 
 ---
@@ -257,7 +287,7 @@ Edit the script to point to your generated composite images for analysis.
 - 📚 **Education** - Computer vision demonstrations
 
 <div align="center">
-<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=250&fit=crop" alt="Security Applications" width="800"/>
+<img src="./images/5.png" alt="Practical ID Card Analysis" width="500"/>
 </div>
 
 ---
@@ -282,7 +312,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ### 🌟 Star this repo if you find it useful!
 
 **Made with ❤️ for document security and computer vision**
-
-<img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=200&fit=crop" alt="Technology Banner" width="600"/>
 
 </div>
