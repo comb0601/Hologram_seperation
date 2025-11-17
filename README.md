@@ -4,7 +4,6 @@
 
 ### *Advanced ID Card Video Analysis & Security Feature Detection*
 
-<img src="./images/5.png" alt="ID Card Video Capture" width="800"/>
 
 [![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.x-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)](https://opencv.org/)
