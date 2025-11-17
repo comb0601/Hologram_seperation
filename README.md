@@ -200,9 +200,7 @@ python detection/demo.py -d yolov5x-seg-id-dr-pp-best.onnx -c yolov5
 
 📚 [View detailed detection documentation →](detection/README.md)
 
-<div align="center">
-<img src="./images/4.png" alt="Perspective Correction Examples" width="700"/>
-</div>
+
 
 ---
 
