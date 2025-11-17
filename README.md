@@ -245,13 +245,7 @@ spec_index = specularity_index(image)
 
 </div>
 
-### Edge Detection
 
-<div align="center">
-<img src="./images/1.png" alt="HSV Color Space Analysis" width="600"/>
-
-*HSV color space conversion enables unique hue counting for hologram detection*
-</div>
 
 ---
 
